@@ -4,17 +4,37 @@ import Editor from "./components/Editor";
 
 function App() {
        const [html, setHtml] = useState("");
+       const [css, setCss] = useState("");
+       const [js, setJs] = useState("");
        const srcDoc = ` <html>
                       <body>${html}</body>
+                      <style>${css}</style>
+                      <script>${js}</script>
                </html>`;
        return (
               <>
-                     <div className="grid grid-cols-3 gap-3">
-                            <Editor value={html} handleChange={setHtml} />
-                            <Editor value={html} handleChange={setHtml} />
-                            <Editor value={html} handleChange={setHtml} />
+                     <div className="flex gap-4 bg-black">
+                            <Editor
+                                   value={html}
+                                   mode="html"
+                                   handleChange={setHtml}
+                            />
+                            <Editor
+                                   value={css}
+                                   mode="css"
+                                   handleChange={setCss}
+                            />
+                            <Editor
+                                   value={js}
+                                   mode="jsx"
+                                   handleChange={setJs}
+                            />
                      </div>
-                     <iframe srcDoc={srcDoc} frameborder="0"></iframe>
+                     <iframe
+                            srcDoc={srcDoc}
+                            frameborder="0"
+                            className="w-full"
+                     ></iframe>
               </>
        );
 }
