@@ -13,10 +13,10 @@ import "ace-builds/src-noconflict/ext-language_tools";
 export default function Editor({ value, mode, handleChange, name, icon }) {
      return (
           <div className="w-[33%]">
-               <div className="w-[100%] h-[8%]">
-                    <div className="bg-primary text-md py-2 px-4 rounded-md flex items-center gap-2 w-fit">
+               <div className="w-[100%] ">
+                    <div className="bg-primary text-md py-2 px-4 rounded-t-lg flex items-center gap-2 w-fit">
                          {icon}
-                         <span className="text-white">{name}</span>
+                         <span className="text-white uppercase">{name}</span>
                     </div>
                </div>
                <AceEditor
@@ -35,7 +35,7 @@ export default function Editor({ value, mode, handleChange, name, icon }) {
                          autoScrollEditorIntoView: true,
                     }}
                     onChange={(value) => {
-                         handleChange(value);
+                         handleChange((prev) => ({ ...prev, [name]: value }));
                     }}
                     className="border-gray-500"
                />

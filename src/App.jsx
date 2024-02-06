@@ -4,48 +4,54 @@ import { IoLogoJavascript } from "react-icons/io5";
 import Editor from "./components/Editor";
 
 function App() {
-     console.log("rendered");
-     const [html, setHtml] = useState("");
-     const [css, setCss] = useState("");
-     const [js, setJs] = useState("");
+     const savedCode = JSON.parse(localStorage.getItem("code"));
+     const [code, setCode] = useState({
+          html: "" || savedCode.html,
+          css: "" || savedCode.css,
+          js: "" || savedCode.js,
+     });
+
      const [srcDoc, setSrcDoc] = useState("");
 
      useEffect(() => {
           const timeout = setTimeout(() => {
                setSrcDoc(`<html>
-                      <body>${html}</body>
-                      <style>${css}</style>
-                      <script>${js}</script>
+                      <body>${code.html}</body>
+                      <style>${code.css}</style>
+                      <script>${code.js}</script>
                </html>`);
+               localStorage.setItem("code", JSON.stringify(code));
           }, 500);
+
           return () => clearTimeout(timeout);
-     }, [html, css, js]);
+     }, [code]);
+
      return (
-          <div>
-               <div className="flex justify-between bg-black h-[55vh]">
+          <>
+               <div className="flex justify-between bg-black h-[50vh]">
                     <Editor
-                         value={html}
+                         value={code.html}
                          mode="html"
-                         handleChange={setHtml}
-                         name="HTML"
+                         handleChange={setCode}
+                         name="html"
                          icon={<FaHtml5 className="text-red-500" />}
                     />
                     <Editor
-                         value={css}
+                         value={code.css}
                          mode="css"
-                         handleChange={setCss}
-                         name="CSS"
+                         handleChange={setCode}
+                         name="css"
                          icon={<FaCss3Alt className="text-blue-500" />}
                     />
                     <Editor
-                         value={js}
+                         value={code.js}
                          mode="jsx"
-                         handleChange={setJs}
-                         name="JS"
+                         handleChange={setCode}
+                         name="js"
                          icon={<IoLogoJavascript className="text-yellow-500" />}
                     />
                </div>
-               <div className="h-[45vh]">
+               <div className="h-[50vh]">
                     <iframe
                          srcDoc={srcDoc}
                          frameborder="0"
@@ -54,7 +60,7 @@ function App() {
                          sandbox="allow-scripts"
                     />
                </div>
-          </div>
+          </>
      );
 }
 
