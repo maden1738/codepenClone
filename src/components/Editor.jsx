@@ -21,7 +21,7 @@ export default function Editor({ value, mode, handleChange, name, icon }) {
                </div>
                <AceEditor
                     width="100%"
-                    height="92%"
+                    height="89%"
                     value={value}
                     mode={mode}
                     theme="tomorrow_night"
