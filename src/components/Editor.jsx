@@ -1,7 +1,5 @@
 import React from "react";
 import AceEditor from "react-ace";
-import { FaHtml5 } from "react-icons/fa";
-
 import "ace-builds/src-noconflict/mode-html";
 import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/mode-jsx";
