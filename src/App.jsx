@@ -6,9 +6,9 @@ import Editor from "./components/Editor";
 function App() {
      const savedCode = JSON.parse(localStorage.getItem("code"));
      const [code, setCode] = useState({
-          html: "" || savedCode.html,
-          css: "" || savedCode.css,
-          js: "" || savedCode.js,
+          html: savedCode?.html || "",
+          css: savedCode?.css || "",
+          js: savedCode?.js || "",
      });
 
      const [srcDoc, setSrcDoc] = useState("");
