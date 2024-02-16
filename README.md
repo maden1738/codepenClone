@@ -1,6 +1,6 @@
-# code-pen clone
+# CODE-PEN CLONE
 
-#### Video Demo:
+#### Video Demo: https://youtu.be/JtrHr58yDtk
 
 #### Run locally
 
